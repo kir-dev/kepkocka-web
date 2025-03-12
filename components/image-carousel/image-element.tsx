@@ -1,10 +1,12 @@
+import { CarouselImage } from "@/payload-types";
+
 export default function ImageElement({
   onClick,
   item,
   active,
 }: {
   onClick: () => void;
-  item: any;
+  item: CarouselImage;
   active: boolean;
 }) {
   return (
@@ -15,12 +17,10 @@ export default function ImageElement({
         }`}
       >
         <p>
-          <span className="text-xl w-full text-center uppercase block">
-            {item.name}
-          </span>
+          <span className="text-xl w-full block">{item.title}</span>
           {item.subtitle}
           <br />
-          {item.year}
+          {new Date(item.date).getFullYear()}
         </p>
       </div>
     </button>

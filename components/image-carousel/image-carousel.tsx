@@ -10,13 +10,20 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import ImageElement from "./image-element";
 import "./embla.css";
+import { CarouselImage } from "@/payload-types";
 
 type PropType = {
   options?: EmblaOptionsType;
+  items: CarouselImage[];
 };
-
+const getImageUrl = (item: CarouselImage): string => {
+  if (typeof item.picture === "number" || !item.picture.url) {
+    return "";
+  }
+  return item.picture.url;
+};
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { options } = props;
+  const { options, items } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -28,36 +35,37 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
-
+  console.log(items);
   return (
     <section className="embla relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {dummyItems.map((item) => (
+          {items.map((item) => (
             <img
-              key={item.name}
+              key={item.createdAt}
               className="embla__slide w-lvw h-lvh object-cover"
-              src={item.image}
+              src={getImageUrl(item)}
+              alt={item.subtitle || ""}
             />
           ))}
         </div>
         <PrevButton
           onClick={onPrevButtonClick}
           disabled={prevBtnDisabled}
-          className="absolute rounded-full left-12 top-1/2 -translate-y-1/2"
+          className="absolute rounded-full left-12 top-1/2 -translate-y-1/2 z-30"
         />
         <NextButton
           onClick={onNextButtonClick}
           disabled={nextBtnDisabled}
-          className="absolute rounded-full right-12 top-1/2 -translate-y-1/2"
+          className="absolute rounded-full right-12 top-1/2 -translate-y-1/2 z-30"
         />
       </div>
 
-      <div className="absolute w-full h-24 bottom-0 left-0 pl-10 box-border overflow-hidden">
+      <div className="absolute w-full h-24 bottom-0 left-0 pl-10 box-border overflow-hidden z-30">
         {scrollSnaps.map((_, index) => (
           <ImageElement
             key={index}
-            item={dummyItems[index]}
+            item={items[index]}
             onClick={() => onDotButtonClick(index)}
             active={index === selectedIndex}
           />
@@ -68,17 +76,3 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 };
 
 export default EmblaCarousel;
-const dummyItems = [
-  {
-    name: "BioBrikett szárító",
-    subtitle: "dokumentumfilm",
-    image: "/img/monor.jpg",
-    year: 2015,
-  },
-  {
-    name: "XXL lakófilm",
-    subtitle: "interjúsorozat",
-    image: "/img/logo.png",
-    year: 2014,
-  },
-];

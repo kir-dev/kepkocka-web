@@ -188,6 +188,7 @@ export interface Video {
  */
 export interface CarouselImage {
   id: number;
+  title?: string | null;
   picture: number | Media;
   subtitle?: string | null;
   date: string;
@@ -327,6 +328,7 @@ export interface VideoSelect<T extends boolean = true> {
  * via the `definition` "carousel-image_select".
  */
 export interface CarouselImageSelect<T extends boolean = true> {
+  title?: T;
   picture?: T;
   subtitle?: T;
   date?: T;
