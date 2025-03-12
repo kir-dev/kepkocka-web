@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import EmblaCarousel from "@/components/image-carousel/image-carousel";
 import { getPayload } from "payload";
@@ -18,6 +19,7 @@ export default async function Home() {
       />
       <Header />
       <EmblaCarousel items={carouselItems.docs} />
+      <Footer />
     </div>
   );
 }
