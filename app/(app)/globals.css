@@ -584,12 +584,6 @@ body {
   }
 }
 
-@media screen and (min-width: 801px) {
-  body {
-    margin-bottom: 100px;
-  }
-}
-
 .socialicon {
   padding: 20px 10px;
   display: inline-block;
