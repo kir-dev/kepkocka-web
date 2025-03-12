@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
-import { DotButton, useDotButton } from "./projectLine";
+import { useDotButton } from "./projectLine";
 import {
   PrevButton,
   NextButton,
@@ -43,7 +43,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
         <PrevButton
           onClick={onPrevButtonClick}
-          disabled={false}
+          disabled={prevBtnDisabled}
           className="absolute rounded-full left-12 top-1/2 -translate-y-1/2"
         />
         <NextButton
