@@ -25,7 +25,7 @@ export default function Header() {
         scrolled ? "bg-white text-black" : "text-white bg-transparent"
       }`}
     >
-      <p className="text-3xl font-semibol uppercase inline-block my-4 mx-7">
+      <p className="text-3xl font-semibold uppercase inline-block my-4 mx-7">
         Képkocka
       </p>
       <div className="float-right my-2.5 mr-11 ml-0">
@@ -33,7 +33,7 @@ export default function Header() {
           <a
             key={item.name}
             href={item.href}
-            className="text-sm font-bold uppercase mx-3 my-5 inline-block align-middle hover:underline"
+            className="text-sm uppercase mx-3 my-5 inline-block align-middle hover:underline"
           >
             {item.name}
           </a>

@@ -1,23 +1,20 @@
-import { CarouselItem } from "../ui/carousel";
-import { CarouselElement } from "./image-carousel";
-
-export default function ImageElement({ item }: { item: CarouselElement }) {
+export default function ImageElement({ item }: { item: any }) {
   return (
-    <CarouselItem
-      className="bg-[url(/img/monor.jpg)]"
-      kk-label="monor"
-      kk-carousel="nyito-background"
+    <div
+      className="w-dvw h-dvh bg-cover"
       style={{
         backgroundImage: `url(${item.image})`,
       }}
     >
-      <p>
-        <span className="title">{item.name}</span>
-        <br />
-        {item.subtitle}
-        <br />
-        {item.year}
-      </p>
-    </CarouselItem>
+      <div className="inline-block m-6 w-64 pr-11 pl-2 border-l-2 cursor-pointer align-top text-left h-5 mt-10 overflow-hidden transition-all">
+        <p>
+          <span className="title">{item.name}</span>
+          <br />
+          {item.subtitle}
+          <br />
+          {item.year}
+        </p>
+      </div>
+    </div>
   );
 }
