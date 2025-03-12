@@ -39,7 +39,7 @@ export default function Header() {
           </a>
         ))}
         <img
-          src="/img/logo.png"
+          src={scrolled ? "/img/logo-black.png" : "/img/logo.png"}
           alt="logo"
           className="inline-block w-9 h-9 ml-12 align-middle contain-content"
         />
