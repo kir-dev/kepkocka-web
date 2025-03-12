@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next/dist/types";
 
 const geistSans = Roboto({
   variable: "--font-roboto-sans",

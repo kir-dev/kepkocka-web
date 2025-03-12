@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
-import { DotButton, useDotButton } from "./projectLine";
+import { useDotButton } from "./projectLine";
 import {
   PrevButton,
   NextButton,
@@ -30,37 +30,38 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <section>
+    <section className="embla relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {dummyItems.map((item) => (
-            <ImageElement key={item.name} item={item} />
+            <img
+              key={item.name}
+              className="embla__slide w-lvw h-lvh object-cover"
+              src={item.image}
+            />
           ))}
         </div>
         <PrevButton
           onClick={onPrevButtonClick}
           disabled={prevBtnDisabled}
-          className="absolute  h-8 w-8 rounded-full left-12 top-1/2 -translate-y-1/2"
+          className="absolute rounded-full left-12 top-1/2 -translate-y-1/2"
         />
         <NextButton
           onClick={onNextButtonClick}
           disabled={nextBtnDisabled}
-          className="absolute  h-8 w-8 rounded-full right-12 top-1/2 -translate-y-1/2"
+          className="absolute rounded-full right-12 top-1/2 -translate-y-1/2"
         />
       </div>
 
-      <div className="embla__controls">
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={"embla__dot".concat(
-                index === selectedIndex ? " embla__dot--selected" : ""
-              )}
-            />
-          ))}
-        </div>
+      <div className="absolute w-full h-24 bottom-0 left-0 pl-10 box-border overflow-hidden">
+        {scrollSnaps.map((_, index) => (
+          <ImageElement
+            key={index}
+            item={dummyItems[index]}
+            onClick={() => onDotButtonClick(index)}
+            active={index === selectedIndex}
+          />
+        ))}
       </div>
     </section>
   );
@@ -77,7 +78,7 @@ const dummyItems = [
   {
     name: "XXL lakófilm",
     subtitle: "interjúsorozat",
-    image: "/images/xxl.jpg",
+    image: "/img/logo.png",
     year: 2014,
   },
 ];
