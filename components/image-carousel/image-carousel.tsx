@@ -11,17 +11,13 @@ import useEmblaCarousel from "embla-carousel-react";
 import ImageElement from "./image-element";
 import "./embla.css";
 import { CarouselImage } from "@/payload-types";
+import { getImageUrl } from "@/lib/utils";
 
 type PropType = {
   options?: EmblaOptionsType;
   items: CarouselImage[];
 };
-const getImageUrl = (item: CarouselImage): string => {
-  if (typeof item.picture === "number" || !item.picture.url) {
-    return "";
-  }
-  return item.picture.url;
-};
+
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { options, items } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
@@ -43,8 +39,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {items.map((item) => (
             <img
               key={item.createdAt}
-              className="embla__slide w-lvw h-lvh object-cover"
-              src={getImageUrl(item)}
+              className="translate-x-0 translate-y-0 min-w-0 pl-4 w-lvw h-lvh object-cover flex-[0_0_100%]"
+              src={getImageUrl(item.picture)}
               alt={item.subtitle || ""}
             />
           ))}
@@ -52,12 +48,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <PrevButton
           onClick={onPrevButtonClick}
           disabled={prevBtnDisabled}
-          className="absolute rounded-full left-12 top-1/2 -translate-y-1/2 z-30"
+          className="absolute rounded-full left-12 top-1/2 -translate-y-1/2 z-30 text-white"
         />
         <NextButton
           onClick={onNextButtonClick}
           disabled={nextBtnDisabled}
-          className="absolute rounded-full right-12 top-1/2 -translate-y-1/2 z-30"
+          className="absolute rounded-full right-12 top-1/2 -translate-y-1/2 z-30 text-white"
         />
       </div>
 

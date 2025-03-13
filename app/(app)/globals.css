@@ -469,19 +469,6 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
-
-.galeria {
-  display: inline-block;
-  margin: 125px 25px 0px;
-  width: calc((100% / 3) - 50px);
-  max-width: 450px;
-  box-sizing: border-box;
-  padding: 25px;
-  background-color: #ffffff;
-  transition: 200ms ease all;
-  cursor: pointer;
-}
-
 .galeria:hover {
   background-color: #dddddd;
 }
