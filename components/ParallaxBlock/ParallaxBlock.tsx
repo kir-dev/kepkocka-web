@@ -36,6 +36,7 @@ export default function ParallaxBlock({children, bgSrc, height}: {children: Reac
     }, []);
 
     useEffect(() => {
+        if(!isInView) return;
         const handleScroll = () => {
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             const scroll = window.scrollY;
