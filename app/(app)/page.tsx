@@ -24,15 +24,15 @@ export default async function Home() {
         <EmblaCarousel items={carouselItems.docs} />
         <Section>
             <DividedText>
-                <p className="flex-1 text-center">Logo</p>
-                <p className="flex-1">A fotó- és filmkészítés, mint az építészet határterületei megkerülhetetlen kiegészítői szakmánk gyakorlásának. Ezt szem előtt tartva alakult meg a Képkocka, a BME Építészmérnöki Kar médiával foglalkozó öntevékeny köre. 2010 óta foglalkozunk a kari események dokumentálásával, szakmai kép- és videóanyagok készítésével, és az érdeklődő hallgatók oktatásával. Folyamatosan törekszünk arra, hogy tudásunk fejlesztésével és eszközparkunk bővítésével a lehető legjobb minőségű alkotásokat készítsük el. </p>
+                <div className="flex-1 text-center ">Logo</div>
+                <div className="flex-1">A fotó- és filmkészítés, mint az építészet határterületei megkerülhetetlen kiegészítői szakmánk gyakorlásának. Ezt szem előtt tartva alakult meg a Képkocka, a BME Építészmérnöki Kar médiával foglalkozó öntevékeny köre. 2010 óta foglalkozunk a kari események dokumentálásával, szakmai kép- és videóanyagok készítésével, és az érdeklődő hallgatók oktatásával. Folyamatosan törekszünk arra, hogy tudásunk fejlesztésével és eszközparkunk bővítésével a lehető legjobb minőségű alkotásokat készítsük el. </div>
             </DividedText>
         </Section>
         <ParallaxBlock bgSrc={"img/fotok.jpg"} height={200}>
             <DividedText>
                 <div className="flex-1" />
                 <div className="flex-1">
-                    <h3 className="text-center">FOTÓZÁS</h3>
+                    <h3 className="text-center text-3xl mb-14">FOTÓZÁS</h3>
                     <p>Karunk sokrétű szakmai és közösségi élete számos lehetőséget kínál az eseményfotózással ismerkedő tagjaink számára: pár órás workshopoktól kezdve a Kari Napokig, kiállításmegnyitóktól a Gólyabálig változatos helyzetekben örökítjük meg a közélet pillanatait. Örömmel vállalunk nagyobb volumenű projekteket is, legutóbb a Középülettervezési Tanszék 70 éves fennállásának évfordulójára rendezett kiállításon 30 fotónkat tekinthették meg a Műcsarnokban. </p>
                 </div>
             </DividedText>

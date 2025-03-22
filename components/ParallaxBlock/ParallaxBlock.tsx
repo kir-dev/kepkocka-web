@@ -52,7 +52,7 @@ export default function ParallaxBlock({children, bgSrc, height}: {children: Reac
         }, [isInView]);
 
     return(
-        <div ref={imageRef} className="relative">
+        <div ref={imageRef} className="relative h-[500px] text-white text-justify p-14">
             <img className="absolute left-0 right-0 z-[-5]" src={bgSrc} alt="Háttér" style={{top: bgPos, transition: `top 0.3s ease-out`}} />
             {children}
         </div>
