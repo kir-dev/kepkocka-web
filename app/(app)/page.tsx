@@ -6,6 +6,7 @@ import config from "@payload-config";
 import Section from "@/components/Section";
 import ParallaxBlock from "@/components/ParallaxBlock/ParallaxBlock";
 import DividedText from "@/components/DividedText";
+import Videos from "@/components/Videos";
 
 export default async function Home() {
   const payload = await getPayload({
@@ -14,6 +15,14 @@ export default async function Home() {
   const carouselItems = await payload.find({
     collection: "carousel-image",
   });
+  const videosDisplay = await payload.find({
+    collection: "video",
+    limit: 3
+  });
+  /*const albums = await payload.find({
+      collection: "album"
+  })*/
+
   return (
     <div className="relative">
       <div
@@ -24,19 +33,42 @@ export default async function Home() {
         <EmblaCarousel items={carouselItems.docs} />
         <Section>
             <DividedText>
-                <img className="flex-1" width={200} src={undefined} alt="logo"/>
-                <div className="flex-1">A fotó- és filmkészítés, mint az építészet határterületei megkerülhetetlen kiegészítői szakmánk gyakorlásának. Ezt szem előtt tartva alakult meg a Képkocka, a BME Építészmérnöki Kar médiával foglalkozó öntevékeny köre. 2010 óta foglalkozunk a kari események dokumentálásával, szakmai kép- és videóanyagok készítésével, és az érdeklődő hallgatók oktatásával. Folyamatosan törekszünk arra, hogy tudásunk fejlesztésével és eszközparkunk bővítésével a lehető legjobb minőségű alkotásokat készítsük el. </div>
+                <div className="flex-1 halfblock "><img className="w-[200px] mx-auto align-middle inline-block" src="/kklogo-400.png" alt="logo"/></div>
+                <div className="flex-1 halfblock text w-[45%] text-justify">
+                    <p className="text">
+                        A fotó- és filmkészítés, mint az építészet határterületei megkerülhetetlen kiegészítői szakmánk gyakorlásának. Ezt szem előtt tartva alakult meg a Képkocka, a BME Építészmérnöki Kar médiával foglalkozó öntevékeny köre. 2010 óta foglalkozunk a kari események dokumentálásával, szakmai kép- és videóanyagok készítésével, és az érdeklődő hallgatók oktatásával. Folyamatosan törekszünk arra, hogy tudásunk fejlesztésével és eszközparkunk bővítésével a lehető legjobb minőségű alkotásokat készítsük el.
+                    </p>
+                </div>
             </DividedText>
         </Section>
-        <ParallaxBlock bgSrc={"img/fotok.jpg"} height={200}>
+        <ParallaxBlock bgSrc={"img/fotok.jpg"} height={0}>
             <DividedText>
                 <div className="flex-1" />
-                <div className="flex-1">
-                    <h3 className="text-center text-2xl mb-14">FOTÓZÁS</h3>
-                    <p>Karunk sokrétű szakmai és közösségi élete számos lehetőséget kínál az eseményfotózással ismerkedő tagjaink számára: pár órás workshopoktól kezdve a Kari Napokig, kiállításmegnyitóktól a Gólyabálig változatos helyzetekben örökítjük meg a közélet pillanatait. Örömmel vállalunk nagyobb volumenű projekteket is, legutóbb a Középülettervezési Tanszék 70 éves fennállásának évfordulójára rendezett kiállításon 30 fotónkat tekinthették meg a Műcsarnokban. </p>
+                <div className="flex-1 halfblock">
+                    <div className="text">
+                        <span className="title">FOTÓZÁS</span>
+                        Karunk sokrétű szakmai és közösségi élete számos lehetőséget kínál az eseményfotózással ismerkedő tagjaink számára: pár órás workshopoktól kezdve a Kari Napokig, kiállításmegnyitóktól a Gólyabálig változatos helyzetekben örökítjük meg a közélet pillanatait. Örömmel vállalunk nagyobb volumenű projekteket is, legutóbb a Középülettervezési Tanszék 70 éves fennállásának évfordulójára rendezett kiállításon 30 fotónkat tekinthették meg a Műcsarnokban.
+                    </div>
                 </div>
             </DividedText>
         </ParallaxBlock>
+        <Section>
+            Galeria
+        </Section>
+        <ParallaxBlock bgSrc="img/videok.jpg" height={0}>
+            <DividedText>
+                <div className="flex-1 halfblock">
+                    <div className="text">
+                        <span className="title">Videózás</span>
+                        Videók készítésekor mindig a történetet helyezzük előtérbe, és törekszünk a minél valósághűbb ábrázolásmódra. Ezeket az elveket követtük szociális építőtáborokról készült dokumentumfilmeinknél: a perbáli gyermekotthonban tartott építőtáborról, illetve a monori Tabán-telepen épült biobrikettszárítóról forgatott videók esetén is.
+                    </div>
+                </div>
+                <div className="flex-1" />
+            </DividedText>
+        </ParallaxBlock>
+        <Section>
+            <Videos videos={videosDisplay.docs} />
+        </Section>
       <Footer />
     </div>
   );
