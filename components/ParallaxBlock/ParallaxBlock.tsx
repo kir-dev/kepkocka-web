@@ -52,8 +52,8 @@ export default function ParallaxBlock({children, bgSrc, height}: {children: Reac
         }, [isInView]);
 
     return(
-        <div ref={imageRef} className="relative h-[500px] text-white overflow-hidden ">
-            <img className="absolute left-0 right-0 z-[-5] w-full" src={bgSrc} alt="Háttér" /*style={{top: bgPos, transition: `top`}}*/ />
+        <div ref={imageRef} className="relative text-white overflow-hidden">
+            <img className="absolute left-0 right-0 z-[-5] w-full h-full " src={bgSrc} alt="Háttér" /*style={{top: bgPos, transition: `top`}}*/ />
             {children}
         </div>
     )

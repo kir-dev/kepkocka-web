@@ -69,7 +69,15 @@ export default async function Home() {
         <Section>
             <Videos videos={videosDisplay.docs} />
         </Section>
-      <Footer />
+        <ParallaxBlock bgSrc="img/kontakt.jpg" height={0}>
+            <DividedText>
+                <div className="flex-1 halfblock">
+                    <Footer />
+                </div>
+                <div className="flex-1" />
+            </DividedText>
+        </ParallaxBlock>
+
     </div>
   );
 }
