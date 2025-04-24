@@ -3,57 +3,48 @@
 import {ReactNode, useEffect, useRef, useState} from "react";
 
 /*height = 200 is a good starting value*/
-export default function ParallaxBlock({children, bgSrc, height}: {children: ReactNode, bgSrc: string, height: number}) {
-
-    const [isInView, setIsInView] = useState(false)
-    const [bgPos, setBgPos] = useState(0)
-    const imageRef = useRef(null)
-
+export default function ParallaxBlock({children, bgSrc}: {children: ReactNode, bgSrc: string, }) {
+    const ref = useRef<HTMLDivElement>(null);
+    const [offsetY, setOffsetY] = useState(0);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsInView(true);
-                    } else {
-                        setIsInView(false);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        if (imageRef.current) {
-            observer.observe(imageRef.current);
-        }
-
-        return () => {
-            if (imageRef.current) {
-                observer.unobserve(imageRef.current);
-            }
-        };
-    }, []);
-
-    useEffect(() => {
-        if(!isInView) return;
         const handleScroll = () => {
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            const scroll = window.scrollY;
-            const maxMovement = (window.innerHeight - height);
-            const movement = -(scroll / maxScroll) * maxMovement;
-            setBgPos(movement);
-            };
+            if (!ref.current) return;
+            const rect = ref.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // The amount the element has entered the viewport (0 when off-screen, 1 when centered)
+            const visibleProgress = 1 - rect.top / windowHeight;
+
+            // Adjust how strong the parallax effect is
+            const parallaxSpeed = 100;
+
+            // Clamp the movement so it doesn’t get weird
+            const clamped = Math.max(0, visibleProgress);
+
+            setOffsetY(clamped * parallaxSpeed);
+        };
 
         window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-        }, [isInView]);
+        handleScroll(); // run once on mount
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
 
     return(
-        <div ref={imageRef} className="relative text-white overflow-hidden">
-            <img className="absolute left-0 right-0 z-[-5] w-full h-full " src={bgSrc} alt="Háttér" /*style={{top: bgPos, transition: `top`}}*/ />
+        <div ref={ref} className="relative">
+            <img
+                className="absolute z-[-5] w-full"
+                style={{
+                    transform: `translateY(${-offsetY}px)`,
+                    backgroundSize: 'cover',
+                    backgroundAttachment: 'fixed',
+                    backgroundPosition: 'center',
+                }}
+                src={bgSrc}
+                alt={"hatter"}
+            >
+            </img>
             {children}
         </div>
     )

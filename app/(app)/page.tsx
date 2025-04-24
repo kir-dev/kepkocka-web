@@ -58,7 +58,7 @@ export default async function Home() {
           </div>
         </DividedText>
       </Section>
-      <ParallaxBlock bgSrc={"img/fotok.jpg"} height={0}>
+      <ParallaxBlock bgSrc={"img/fotok.jpg"} >
         <DividedText>
           <div className="flex-1" />
           <div className="flex-1 halfblock">
@@ -76,8 +76,10 @@ export default async function Home() {
           </div>
         </DividedText>
       </ParallaxBlock>
-      <Albums albums={albumItems.docs} />
-      <ParallaxBlock bgSrc="img/videok.jpg" height={0}>
+      <Section>
+        <Albums albums={albumItems.docs} />
+      </Section>
+      <ParallaxBlock bgSrc="img/videok.jpg" >
         <DividedText>
           <div className="flex-1 halfblock">
             <div className="text">
@@ -96,7 +98,7 @@ export default async function Home() {
       <Section>
         <Videos videos={videosDisplay.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/kontakt.jpg" height={0}>
+      <ParallaxBlock bgSrc="img/kontakt.jpg" >
         <DividedText>
           <div className="flex-1 halfblock">
             <Footer />
