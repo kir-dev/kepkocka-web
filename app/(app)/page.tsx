@@ -76,7 +76,7 @@ export default async function Home() {
           </div>
         </DividedText>
       </ParallaxBlock>
-      <Section>Galeria</Section>
+      <Albums albums={albumItems.docs} />
       <ParallaxBlock bgSrc="img/videok.jpg" height={0}>
         <DividedText>
           <div className="flex-1 halfblock">
@@ -104,11 +104,6 @@ export default async function Home() {
           <div className="flex-1" />
         </DividedText>
       </ParallaxBlock>
-
-      <Header />
-      <EmblaCarousel items={carouselItems.docs} />
-      <Albums albums={albumItems.docs} />
-      <Footer />
     </div>
   );
 }
