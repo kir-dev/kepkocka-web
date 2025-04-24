@@ -79,10 +79,10 @@ export default async function Home() {
       <Section>
         <Albums albums={albumItems.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/videok.jpg" >
+      <ParallaxBlock bgSrc="img/videok.jpg" floatRight >
         <DividedText>
           <div className="flex-1 halfblock">
-            <div className="text">
+            <div className="text text-white">
               <span className="title">Videózás</span>
               Videók készítésekor mindig a történetet helyezzük előtérbe, és
               törekszünk a minél valósághűbb ábrázolásmódra. Ezeket az elveket
@@ -98,7 +98,7 @@ export default async function Home() {
       <Section>
         <Videos videos={videosDisplay.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/kontakt.jpg" >
+      <ParallaxBlock bgSrc="img/kontakt.jpg" floatRight >
         <DividedText>
           <div className="flex-1 halfblock">
             <Footer />

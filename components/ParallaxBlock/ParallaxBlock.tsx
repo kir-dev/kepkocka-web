@@ -3,7 +3,7 @@
 import {ReactNode, useEffect, useRef, useState} from "react";
 
 /*height = 200 is a good starting value*/
-export default function ParallaxBlock({children, bgSrc}: {children: ReactNode, bgSrc: string, }) {
+export default function ParallaxBlock({children, bgSrc, floatRight}: {children: ReactNode, bgSrc: string, floatRight?: boolean}) {
     const ref = useRef<HTMLDivElement>(null);
     const [offsetY, setOffsetY] = useState(0);
 
@@ -13,16 +13,13 @@ export default function ParallaxBlock({children, bgSrc}: {children: ReactNode, b
             const rect = ref.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // The amount the element has entered the viewport (0 when off-screen, 1 when centered)
             const visibleProgress = 1 - rect.top / windowHeight;
 
-            // Adjust how strong the parallax effect is
-            const parallaxSpeed = 100;
+            const parallaxSpeed = 250;
 
-            // Clamp the movement so it doesn’t get weird
             const clamped = Math.max(0, visibleProgress);
 
-            setOffsetY(clamped * parallaxSpeed);
+            setOffsetY((clamped * parallaxSpeed) - rect.height / 2);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -34,12 +31,9 @@ export default function ParallaxBlock({children, bgSrc}: {children: ReactNode, b
     return(
         <div ref={ref} className="relative">
             <img
-                className="absolute z-[-5] w-full"
+                className={`absolute z-[-5] min-h-[100vh] min-w-screen max-w-screen object-cover ${ floatRight ? "right-0" : "" }`}
                 style={{
-                    transform: `translateY(${-offsetY}px)`,
-                    backgroundSize: 'cover',
-                    backgroundAttachment: 'fixed',
-                    backgroundPosition: 'center',
+                    transform: `translateY(${offsetY}px)`,
                 }}
                 src={bgSrc}
                 alt={"hatter"}
