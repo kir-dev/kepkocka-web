@@ -12,6 +12,17 @@
   --slide-spacing: 2rem;
   --slide-size: 33%;
 }
+@media (max-width: 800px) {
+  .embla2 {
+    --slide-size: 50%; /* Make each slide take up the full width */
+  }
+}
+@media (max-width: 600px) {
+  .embla2 {
+    --slide-size: 100%; /* Make each slide take up the full width */
+  }
+}
+
 .embla__viewport {
   overflow: hidden;
 }

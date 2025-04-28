@@ -34,7 +34,13 @@ export default async function Home() {
         style={{ backgroundImage: "url(/overlay-pattern.png)" }}
       />
       <Header />
-      <EmblaCarousel items={carouselItems.docs} />
+      <EmblaCarousel
+        items={carouselItems.docs}
+        options={{
+          loop: true,
+          duration: 50,
+        }}
+      />
       <Section>
         <DividedText>
           <div className="flex-1 halfblock ">
@@ -58,7 +64,7 @@ export default async function Home() {
           </div>
         </DividedText>
       </Section>
-      <ParallaxBlock bgSrc={"img/fotok.jpg"} >
+      <ParallaxBlock bgSrc={"img/fotok.jpg"}>
         <DividedText>
           <div className="flex-1" />
           <div className="flex-1 halfblock">
@@ -79,7 +85,7 @@ export default async function Home() {
       <Section>
         <Albums albums={albumItems.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/videok.jpg" floatRight >
+      <ParallaxBlock bgSrc="img/videok.jpg" floatRight>
         <DividedText>
           <div className="flex-1 halfblock">
             <div className="text text-white">
@@ -98,7 +104,7 @@ export default async function Home() {
       <Section>
         <Videos videos={videosDisplay.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/kontakt.jpg" floatRight >
+      <ParallaxBlock bgSrc="img/kontakt.jpg" floatRight>
         <DividedText>
           <div className="flex-1 halfblock">
             <Footer />

@@ -4,7 +4,7 @@ import SocialMediaLink from "./utils/SocialMediaLink";
 export default function Footer() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text">
-      <div className="bg-gray-800 text-white p-4 flex flex-col items-center text-center gap-4">
+      <div className="text-white p-4 flex flex-col items-center text-center gap-4">
         <span className="title">Kontakt</span>
         <p>
           Ha szerednéd felkérni a Képkockát egy megbízásra, használd az egyik
