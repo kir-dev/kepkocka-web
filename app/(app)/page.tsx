@@ -35,7 +35,13 @@ export default async function Home() {
         style={{ backgroundImage: "url(/overlay-pattern.png)" }}
       />
       <Header />
-      <EmblaCarousel items={carouselItems.docs} />
+      <EmblaCarousel
+        items={carouselItems.docs}
+        options={{
+          loop: true,
+          duration: 50,
+        }}
+      />
       <Section>
         <DividedText>
           <div className="flex-1 halfblock">
