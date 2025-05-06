@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Header() {
@@ -28,13 +29,13 @@ export default function Header() {
       <p className="text-3xl font-semibold uppercase inline-block ">Képkocka</p>
       <div className="flex flex-row items-center just">
         {menuItems.map((item) => (
-          <a
+          <div
             key={item.name}
-            href={item.href}
-            className="text-sm uppercase mx-3 my-5 inline-block align-middle hover:underline"
+            onClick={() => scrolltoElement(item.href)}
+            className="text-sm uppercase mx-3 my-5 inline-block align-middle hover:underline cursor-pointer"
           >
             {item.name}
-          </a>
+          </div>
         ))}
         <img
           src={scrolled ? "/img/logo-black.png" : "/img/logo.png"}
@@ -45,30 +46,39 @@ export default function Header() {
     </div>
   );
 }
+const scrolltoElement = function (element_id: string) {
+  const element = document.getElementById(element_id);
+  element?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+};
+
 const menuItems: MenuItem[] = [
   {
     name: "Megbízás",
-    href: "#kontakt-holder",
+    href: "kontakt-holder",
   },
   {
     name: "Projektek",
-    href: "#nyito-holder",
+    href: "nyito-holder",
   },
   {
     name: "Rólunk",
-    href: "#bemutatkozas-holder",
+    href: "bemutatkozas-holder",
   },
   {
     name: "Fotók",
-    href: "#fotok-holder",
+    href: "fotok-holder",
   },
   {
     name: "Videók",
-    href: "#videok-holder",
+    href: "videok-holder",
   },
   {
     name: "Kontakt",
-    href: "#kontakt-holder",
+    href: "kontakt-holder",
   },
 ];
 type MenuItem = {

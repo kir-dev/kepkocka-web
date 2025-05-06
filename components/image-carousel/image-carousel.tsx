@@ -31,9 +31,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
-  console.log(items);
   return (
-    <section className="embla relative">
+    <section className="embla relative" id="nyito-holder">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {items.map((item) => (

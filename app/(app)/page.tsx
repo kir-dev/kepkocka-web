@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import EmblaCarousel from "@/components/image-carousel/image-carousel";
@@ -37,14 +38,17 @@ export default async function Home() {
       <EmblaCarousel items={carouselItems.docs} />
       <Section>
         <DividedText>
-          <div className="flex-1 halfblock ">
+          <div className="flex-1 halfblock">
             <img
               className="w-[200px] mx-auto align-middle inline-block"
               src="/kklogo-400.png"
               alt="logo"
             />
           </div>
-          <div className="flex-1 halfblock text w-[45%] text-justify">
+          <div
+            className="flex-1 halfblock text w-[45%] text-justify"
+            id="bemutatkozas-holder"
+          >
             <p className="text">
               A fotó- és filmkészítés, mint az építészet határterületei
               megkerülhetetlen kiegészítői szakmánk gyakorlásának. Ezt szem
@@ -58,10 +62,10 @@ export default async function Home() {
           </div>
         </DividedText>
       </Section>
-      <ParallaxBlock bgSrc={"img/fotok.jpg"} >
+      <ParallaxBlock bgSrc={"img/fotok.jpg"}>
         <DividedText>
           <div className="flex-1" />
-          <div className="flex-1 halfblock">
+          <div className="flex-1 halfblock scroll-smooth" id="fotok-holder">
             <div className="text">
               <span className="title">FOTÓZÁS</span>
               Karunk sokrétű szakmai és közösségi élete számos lehetőséget kínál
@@ -79,9 +83,9 @@ export default async function Home() {
       <Section>
         <Albums albums={albumItems.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/videok.jpg" floatRight >
+      <ParallaxBlock bgSrc="img/videok.jpg" floatRight>
         <DividedText>
-          <div className="flex-1 halfblock">
+          <div className="flex-1 halfblock" id="videok-holder">
             <div className="text text-white">
               <span className="title">Videózás</span>
               Videók készítésekor mindig a történetet helyezzük előtérbe, és
@@ -98,9 +102,9 @@ export default async function Home() {
       <Section>
         <Videos videos={videosDisplay.docs} />
       </Section>
-      <ParallaxBlock bgSrc="img/kontakt.jpg" floatRight >
+      <ParallaxBlock bgSrc="img/kontakt.jpg" floatRight>
         <DividedText>
-          <div className="flex-1 halfblock">
+          <div className="flex-1 halfblock" id="kontakt-holder">
             <Footer />
           </div>
           <div className="flex-1" />
