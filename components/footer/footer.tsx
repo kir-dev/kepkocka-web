@@ -6,22 +6,15 @@ export default function Footer() {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text">
       <div className="text-white p-4 flex flex-col items-center text-center gap-4">
         <span className="title">Kontakt</span>
-        <p>
-          Ha szerednéd felkérni a Képkockát egy megbízásra, használd az egyik
-          gombot:
-        </p>
+        <p>Ha szerednéd felkérni a Képkockát egy megbízásra</p>
         <div className="flex flex-col sm:flex-row gap-4">
           <FormsButton
-            text="Videós projekt"
-            link="https://docs.google.com/forms/d/e/1FAIpQLSe_NLBTqX1lGTYSK_H37MT6Lz7rvIVd_xmtd1aKrj8UZtFVjw/viewform"
-          />
-          <FormsButton
-            text="Fotós projekt"
-            link="https://docs.google.com/forms/d/e/1FAIpQLScnTKyOSX_43c6RShFCdd9YVmkbOhrVn6n3Rurq342Zz-JfNQ/viewform"
+            text="Képkocka felkérés"
+            link="https://forms.gle/mHA3Dc3M1qSnRmEK6"
           />
         </div>
-        <p>kepkocka@epiteszhk.bme.hu</p>
-        <p>facebook.com/Kepkocka</p>
+        <a href="MAILTO:kepkocka@uni.bme.hu">kepkocka@uni.bme.hu</a>
+        <a href="https://www.facebook.com/Kepkocka">facebook.com/Kepkocka</a>
         <p>1117 Budapest, Bercsényi u. 28-30.</p>
         <div className="flex gap-4">
           <SocialMediaLink
