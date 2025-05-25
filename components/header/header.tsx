@@ -71,7 +71,7 @@ export default function Header() {
               : "max-h-0 opacity-0 -translate-y-2"
           }`}
         >
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <div
               key={item.name}
               onClick={() => scrolltoElement(item.href)}

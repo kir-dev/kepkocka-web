@@ -164,7 +164,6 @@ export interface Album {
   name: string;
   pictures?:
     | {
-        title?: string | null;
         image: number | Media;
         id?: string | null;
       }[]
@@ -307,7 +306,6 @@ export interface AlbumSelect<T extends boolean = true> {
   pictures?:
     | T
     | {
-        title?: T;
         image?: T;
         id?: T;
       };
